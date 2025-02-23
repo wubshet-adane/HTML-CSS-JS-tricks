@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Effect</title>
+    <style>
+        /* Basic styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #333;
+            border-right: 2px solid black; /* Simulates cursor */
+            white-space: nowrap; /* Prevents wrapping */
+            overflow: hidden; /* Hides the rest of the text */
+        }
+    </style>
+</head>
+<body>
+    <h1 id="typewriter"></h1>
+
+    <script>
+        const text = "Welcome Guests"; // The text to be typed
+        let index = 0;
+        let isAdding = true;
+
+        function typeEffect() {
+            const h1 = document.getElementById('typewriter');
+
+            if (isAdding) {
+                // Add letters one by one
+                h1.textContent = text.slice(0, index++);
+                if (index > text.length) {
+                    // Start deleting after the full sentence is typed
+                    isAdding = false;
+                    setTimeout(typeEffect, 2500); // Pause before deleting
+                    return;
+                }
+            } else {
+                // Remove letters one by one
+                h1.textContent = text.slice(0, index--);
+                if (index < 0) {
+                    // Start typing again after everything is deleted
+                    isAdding = true;
+                }
+            }
+
+            // Speed control for typing and deleting
+            const speed = isAdding ? 300 : 200;
+            setTimeout(typeEffect, speed);
+        }
+
+        // Start the typing effect
+        typeEffect();
+    </script>
+</body>
+</html>
