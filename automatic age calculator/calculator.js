@@ -48,13 +48,14 @@
                         }
                         else{
                             if(monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+                                const nextMonth = 12 - dob.getMonth() + today.getMonth();
+
                                 body.style.backgroundImage = "url('Age-calculator.jpg')"; 
                                 birth_year.style.display = "none";
                                 result.textContent = `You are ${age-1} years old.`;
-                                const possitiveMonth = Math.abs(monthDifference);
                                 document.getElementById("result-month-and-date").style.display = "block";
                                 document.getElementById("result-month-and-date").textContent =
-                                `Your ${age} th birth day will be after ${possitiveMonth}  months and  ${date} days.`;
+                                `Your ${age} th birth day will be after ${nextMonth}  months and  ${date} days.`;
                             }
                         }
                     }
