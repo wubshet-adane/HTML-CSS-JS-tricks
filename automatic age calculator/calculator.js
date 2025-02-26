@@ -25,7 +25,7 @@
                     body.style.backgroundImage = "url('Age-Calculator.jpg')";
                     document.getElementById("dob").style.border = "1px solid red";
                     warning.style.display = "block";
-                    warning.textContent = "pleace enter birth date that was one year ago!"
+                    warning.textContent = "pleace enter birth date before today!"
                 } 
                 
                 else {
@@ -43,8 +43,9 @@
                             result.textContent = "You are " + age + " years old.";
                             const possitiveMonth = Math.abs(monthDifference);
                             document.getElementById("result-month-and-date").style.display = "block";
-                            document.getElementById("result-month-and-date").textContent =
-                            `Your ${age + 1} th birth day will be after ${possitiveMonth}  months and  ${date} days.`;
+                            document.getElementById("result-month-and-date").innerHTML =
+                            `Your <span class="highlight">${age + 1}</span> th birthday will be after
+                            <span class="highlight"> ${possitiveMonth}</span> months and <span class="highlight"> ${date}</span> days.`;
                         }
                         else{
                             var nextMonth;
@@ -79,7 +80,8 @@
             
             else {
                 result_container.style.display = "none";
-                alert("Please select a valid date of birth.");
+                warning.style.display = "block";
+                warning.textContent = "Please select a valid date of birth.";
             }
         }
         function turnOnCalculator(){
