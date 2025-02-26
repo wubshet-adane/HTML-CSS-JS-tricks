@@ -16,7 +16,6 @@
                 const today = new Date();
                 
                 let age = today.getFullYear() - dob.getFullYear();
-                age--;
                 const monthDifference = today.getMonth() - dob.getMonth();
                 let date = today.getDate() - dob.getDate();
                 const result = document.getElementById("result");
@@ -30,26 +29,32 @@
                 } 
                 
                 else {
-
-                    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
-                        age;
-                    }
-
                     if (monthDifference == 0 && today.getDate() == dob.getDate()) {
                         body.style.backgroundImage = "url('birthday body.jpg')"; 
                         birth_year.style.display = "block";
-                        result.textContent = `You are ${age + 1} years old.`;
+                        result.textContent = `You are ${age} years old.`;
                         document.getElementById("result-month-and-date").style.display = "none";
-                    }
-                    
+                    }   
                     else {
-                        body.style.backgroundImage = "url('Age-calculator.jpg')"; 
-                        birth_year.style.display = "none";
-                        result.textContent = "You are " + age + " years old.";
-                        const possitiveMonth = Math.abs(monthDifference);
-                        document.getElementById("result-month-and-date").style.display = "block";
-                        document.getElementById("result-month-and-date").textContent =
-                         `Your ${age + 1} th birth day will be after ${possitiveMonth}  months and  ${date} days.`;
+
+                        if (monthDifference > 0 || (monthDifference === 0 && today.getDate() > dob.getDate())) {
+                            body.style.backgroundImage = "url('Age-calculator.jpg')"; 
+                            birth_year.style.display = "none";
+                            result.textContent = "You are " + age + " years old.";
+                            const possitiveMonth = Math.abs(monthDifference);
+                            document.getElementById("result-month-and-date").style.display = "block";
+                            document.getElementById("result-month-and-date").textContent =
+                            `Your ${age + 1} th birth day will be after ${possitiveMonth}  months and  ${date} days.`;
+                        }
+                       if(monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+                            body.style.backgroundImage = "url('Age-calculator.jpg')"; 
+                            birth_year.style.display = "none";
+                            result.textContent = `You are ${age-1} years old.`;
+                            const possitiveMonth = Math.abs(monthDifference);
+                            document.getElementById("result-month-and-date").style.display = "block";
+                            document.getElementById("result-month-and-date").textContent =
+                            `Your ${age} th birth day will be after ${possitiveMonth}  months and  ${date} days.`;
+                        }
                     }
                 }                
             } 
