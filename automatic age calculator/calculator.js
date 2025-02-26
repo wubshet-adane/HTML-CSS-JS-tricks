@@ -55,6 +55,11 @@
                                 nextDate = 0;
                                 dateUncertainity = "";
                             }
+                            else if(monthDifference < 0 && today.getDate() > dob.getDate()){
+                                nextMonth = 12 - dob.getMonth() + today.getMonth();
+                                nextDate = today.getDate()- dob.getDate();
+                                dateUncertainity = "";
+                            }                                
                             else{
                                 nextMonth = (12 - dob.getMonth() + today.getMonth()) -1;
                                 nextDate = 30 - dob.getDate() + today.getDate();
