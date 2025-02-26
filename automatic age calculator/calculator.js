@@ -32,7 +32,7 @@
                     if (monthDifference == 0 && today.getDate() == dob.getDate()) {
                         body.style.backgroundImage = "url('birthday body.jpg')"; 
                         birth_year.style.display = "block";
-                        result.textContent = `You are ${age} years old.`;
+                        result.innerHTML = `You are <span class="highlight">${age}</span> years old.`;
                         document.getElementById("result-month-and-date").style.display = "none";
                     }   
                     else {
@@ -40,12 +40,11 @@
                         if (monthDifference > 0 || (monthDifference === 0 && today.getDate() > dob.getDate())) {
                             body.style.backgroundImage = "url('Age-calculator.jpg')"; 
                             birth_year.style.display = "none";
-                            result.textContent = "You are " + age + " years old.";
+                            result.innerHTML = `You are <span class="highlight">${age}</span> years old.`;
                             const possitiveMonth = Math.abs(monthDifference);
                             document.getElementById("result-month-and-date").style.display = "block";
-                            document.getElementById("result-month-and-date").innerHTML =
-                            `Your <span class="highlight">${age + 1}</span> th birthday will be after
-                            <span class="highlight"> ${possitiveMonth}</span> months and <span class="highlight"> ${date}</span> days.`;
+                            document.getElementById("result-month-and-date").innerHTML = `Your <span class="highlight">${age + 1}<sup>th</sup></span> 
+                            birthday will be after <span class="highlight"> ${possitiveMonth}</span> months and <span class="highlight"> ${date}</span> days.`;
                         }
                         else{
                             var nextMonth;
@@ -69,10 +68,10 @@
 
                             body.style.backgroundImage = "url('Age-calculator.jpg')"; 
                             birth_year.style.display = "none";
-                            result.textContent = `You are ${age-1} years old.`;
+                            result.innerHTML = `You are <span class="highlight">${age-1}</span> years old.`;
                             document.getElementById("result-month-and-date").style.display = "block";
-                            document.getElementById("result-month-and-date").textContent =
-                            `Your ${age} th birth day will be after ${nextMonth}  months and  ${nextDate} ${dateUncertainity} days.`;
+                            document.getElementById("result-month-and-date").innerHTML = `Your <span class="highlight">${age}<sup>th</sup></span>
+                             birth day will be after <span class="highlight">${nextMonth}</span> months and  <span class="highlight">${nextDate} ${dateUncertainity}</span> days.`;
                         }
                     }
                 }                

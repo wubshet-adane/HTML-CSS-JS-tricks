@@ -157,3 +157,9 @@ label {
     color:red;
     font-size: 16px;
 }
+
+.highlight{
+    color: #ff00d0;
+    font-family:cursive;
+    font-weight: 600;
+}
