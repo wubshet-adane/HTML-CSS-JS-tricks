@@ -47,16 +47,26 @@
                             `Your ${age + 1} th birth day will be after ${possitiveMonth}  months and  ${date} days.`;
                         }
                         else{
-                            if(monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
-                                const nextMonth = 12 - dob.getMonth() + today.getMonth();
+                            var nextMonth;
+                            var nextDate;
+                            var dateUncertainity;
+                            if(monthDifference < 0 && today.getDate() == dob.getDate()) {
+                                nextMonth = 12 - dob.getMonth() + today.getMonth();
+                                nextDate = 0;
+                                dateUncertainity = "";
+                            }
+                            else{
+                                nextMonth = (12 - dob.getMonth() + today.getMonth()) -1;
+                                nextDate = 30 - dob.getDate() + today.getDate();
+                                dateUncertainity = "plus or minus 2days";
+                            }
 
                                 body.style.backgroundImage = "url('Age-calculator.jpg')"; 
                                 birth_year.style.display = "none";
                                 result.textContent = `You are ${age-1} years old.`;
                                 document.getElementById("result-month-and-date").style.display = "block";
                                 document.getElementById("result-month-and-date").textContent =
-                                `Your ${age} th birth day will be after ${nextMonth}  months and  ${date} days.`;
-                            }
+                                `Your ${age} th birth day will be after ${nextMonth}  months and  ${nextDate} ${dateUncertainity} days.`;
                         }
                     }
                 }                
