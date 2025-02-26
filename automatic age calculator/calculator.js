@@ -46,14 +46,16 @@
                             document.getElementById("result-month-and-date").textContent =
                             `Your ${age + 1} th birth day will be after ${possitiveMonth}  months and  ${date} days.`;
                         }
-                       if(monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
-                            body.style.backgroundImage = "url('Age-calculator.jpg')"; 
-                            birth_year.style.display = "none";
-                            result.textContent = `You are ${age-1} years old.`;
-                            const possitiveMonth = Math.abs(monthDifference);
-                            document.getElementById("result-month-and-date").style.display = "block";
-                            document.getElementById("result-month-and-date").textContent =
-                            `Your ${age} th birth day will be after ${possitiveMonth}  months and  ${date} days.`;
+                        else{
+                            if(monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+                                body.style.backgroundImage = "url('Age-calculator.jpg')"; 
+                                birth_year.style.display = "none";
+                                result.textContent = `You are ${age-1} years old.`;
+                                const possitiveMonth = Math.abs(monthDifference);
+                                document.getElementById("result-month-and-date").style.display = "block";
+                                document.getElementById("result-month-and-date").textContent =
+                                `Your ${age} th birth day will be after ${possitiveMonth}  months and  ${date} days.`;
+                            }
                         }
                     }
                 }                
