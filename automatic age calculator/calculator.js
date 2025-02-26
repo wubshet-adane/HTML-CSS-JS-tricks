@@ -31,6 +31,10 @@
                 
                 else {
 
+                    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+                        age;
+                    }
+
                     if (monthDifference == 0 && today.getDate() == dob.getDate()) {
                         body.style.backgroundImage = "url('birthday body.jpg')"; 
                         birth_year.style.display = "block";
